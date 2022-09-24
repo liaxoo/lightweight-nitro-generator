@@ -1,4 +1,4 @@
 requests
 colored
 numpy
-colorama
+colorama 
