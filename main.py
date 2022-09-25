@@ -9,11 +9,8 @@ import numpy
 from colorama import Fore
 import os.path
 
-
 time.sleep(3)
 os.system('cls' if os.name == 'nt' else 'clear')
-
-
 
 ## MODULE CHECK 
 def moduleCheck():
@@ -108,12 +105,7 @@ def codeChecker(nitro:str, checkType:int):  # Used to check a single code at a t
                 print("[" '\033[31m' + "INVALID CODE" + '\033[39m' "] " + '\033[39m' + f"{nitro}")
                 return False  # Tell the main function there was not a code found
 
-
-
-#print('[' '\033[31m' + '-' + '\033[39m' ']' + '\033[39m' ' Initializing, please wait...')
 print('\033[39m') # and reset to default color
-
-
 
 class NitroGen:  # Initialise the class
     def __init__(self):  # The initaliseaiton function
@@ -128,13 +120,13 @@ class NitroGen:  # Initialise the class
         time.sleep(2) 
 
         # Run checks 
-        #moduleCheck();
-        #time.sleep(1);
-        #wifiCheck();
-        #time.sleep(1);
-        #fileCheck();
-        #time.sleep(1);
-        #clearScreen(2);
+        moduleCheck();
+        time.sleep(1);
+        wifiCheck();
+        time.sleep(1);
+        fileCheck();
+        time.sleep(1);
+        clearScreen(2);
 
         print("""┏━┓╋┏┓┏┓╋╋╋╋╋╋┏━━━┓╋╋╋╋╋╋╋╋╋╋╋╋╋┏┓╋╋╋╋╋╋╋╋╋╋┏━━━┳┓╋╋╋╋╋╋╋┏┓
 ┃┃┗┓┃┣┛┗┓╋╋╋╋╋┃┏━┓┃╋╋╋╋╋╋╋╋╋╋╋╋┏┛┗┓╋╋╋╋╋╋╋╋╋┃┏━┓┃┃╋╋╋╋╋╋╋┃┃
@@ -184,6 +176,13 @@ class NitroGen:  # Initialise the class
                 # If the user interrupted the program
                 print("\nInterrupted by user")
                 break  # Break the loop
+        
+        if num != 1: print("Finished generating codes.")
+        else: print(f"""
+Results:
+ Valid: {len(successfulCodes)}
+ Invalid: {invalidCodes}
+ Valid Codes: {', '.join(successfulCodes)}""")  # Give a report of the results of the check
 
 if __name__ == '__main__':
     Gen = NitroGen()  # Create the nitro generator object
