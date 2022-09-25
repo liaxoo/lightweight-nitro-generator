@@ -67,6 +67,7 @@ def fileCheck():
         slowType('[' '\033[32m' + '+' + '\033[39m' ']' + '\033[39m' ' File check successful!', 0.005)
     else:
         slowType('[' '\033[31m' + '-' + '\033[39m' ']' + '\033[39m' ' Could not find a file to write the codes in. Please create a "Generated Codes.txt" file in the directory or reinstall.', 0.005)
+        time.sleep(10)
         exit()
     
 ## CLEAR SCREEN 
