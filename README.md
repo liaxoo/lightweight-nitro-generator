@@ -1,6 +1,6 @@
 
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/NitroGenerator.png" alt="Logo" width="800" height="275">
+    <img src="images/NitroGenerator.png" alt="Logo" width="800" height="225">
   </a>
   
 
