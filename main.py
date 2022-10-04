@@ -1,13 +1,8 @@
-from cgitb import reset
 import ctypes
 import string
 import os
 import time
-import requests
-from warnings import catch_warnings
-import numpy
-from colorama import Fore
-import os.path
+from xml.etree.ElementTree import tostring
 
 time.sleep(3)
 os.system('cls' if os.name == 'nt' else 'clear')
@@ -80,31 +75,27 @@ def clearScreen(sleepTime: float):
             
 ## CODE CHECKER
 def codeChecker(nitro:str, checkType:int):  # Used to check a single code at a time
-        if checkType == 1: ## If the user only wants to generate, not check
-            with open("Generated Codes.txt", "a") as file:  # Open file to write
+        import requests
+        ## If the user wants to generate and check
+        # Generate the request url
+        url = f"https://discordapp.com/api/v9/entitlements/gift-codes/{nitro}?with_application=false&with_subscription_plan=true"
+        response = requests.get(url)  # Get the response from discord
+
+        if response.status_code == 200:  # If the responce went through
+            # Notify the user the code was valid
+            print(f" Valid | {nitro} ", flush=True,
+                end="" if os.name == 'nt' else "\n")
+            with open("Generated Codes.txt", "w") as file:  # Open file to write
                 # Write the nitro code to the file it will automatically add a newline
-                file.write(nitro + "\n")
-                print("[" '\033[32m' + "GENERATED CODE" + '\033[39m' "] " + '\033[39m' + f"{nitro}")
-                return False;
-        else: ## If the user wants to generate and check
-            # Generate the request url
-            url = f"https://discordapp.com/api/v9/entitlements/gift-codes/{nitro}?with_application=false&with_subscription_plan=true"
-            response = requests.get(url)  # Get the response from discord
-
-            if response.status_code == 200:  # If the responce went through
-                # Notify the user the code was valid
-                print(f" Valid | {nitro} ", flush=True,
-                    end="" if os.name == 'nt' else "\n")
-                with open("Generated Codes.txt", "w") as file:  # Open file to write
-                    # Write the nitro code to the file it will automatically add a newline
-                    file.write(nitro)
-                return True  # Tell the main function the code was found
-
-            # If the responce got ignored or is invalid ( such as a 404 or 405 )
-            else:
-                # Tell the user it tested a code and it was invalid
-                print("[" '\033[31m' + "INVALID CODE" + '\033[39m' "] " + '\033[39m' + f"{nitro}")
-                return False  # Tell the main function there was not a code found
+                file.write(nitro)
+            return True  # Tell the main function the code was found
+        # If the responce got ignored or is invalid ( such as a 404 or 405 )
+        else:
+            # Tell the user it tested a code and it was invalid
+            print("[" '\033[31m' + "INVALID CODE" + '\033[39m' "] " + '\033[39m' + f"{nitro}")
+            #print(f" Invalid | {nitro} ", flush=True,
+                    #end="" if os.name == 'nt' else "\n")
+            return False  # Tell the main function there was not a code found
 
 print('\033[39m') # and reset to default color
 
@@ -118,16 +109,19 @@ class NitroGen:  # Initialise the class
         # Initializing message
         slowType('[' '\033[33m' + '!' + '\033[39m' ']' + '\033[39m' ' Initializing...', 0.05);
 
-        time.sleep(2) 
+        ##time.sleep(2) 
 
         # Run checks 
         moduleCheck();
-        time.sleep(1);
+        ##time.sleep(1);
         wifiCheck();
-        time.sleep(1);
+        ##time.sleep(1);
         fileCheck();
         time.sleep(1);
         clearScreen(2);
+
+        import requests
+        import numpy
 
         print("""┏━┓╋┏┓┏┓╋╋╋╋╋╋┏━━━┓╋╋╋╋╋╋╋╋╋╋╋╋╋┏┓╋╋╋╋╋╋╋╋╋╋┏━━━┳┓╋╋╋╋╋╋╋┏┓
 ┃┃┗┓┃┣┛┗┓╋╋╋╋╋┃┏━┓┃╋╋╋╋╋╋╋╋╋╋╋╋┏┛┗┓╋╋╋╋╋╋╋╋╋┃┏━┓┃┃╋╋╋╋╋╋╋┃┃
@@ -142,6 +136,7 @@ class NitroGen:  # Initialise the class
         
         ## GET NUMBER OF CODES & TYPE
         try:
+            ##Number of codes user wants 
             num = int(input(''))  # Ask the user for the amount of codes
         except ValueError:
             input(slowType('[' '\033[31m' + '-' + '\033[39m' ']' + '\033[39m' ' What you entered wasn\'t a number! Press enter to exit and try again.', 0.005))
@@ -161,22 +156,34 @@ class NitroGen:  # Initialise the class
         chars = []
         chars[:0] = string.ascii_letters + string.digits
 
-        c = numpy.random.choice(chars, size=[num, 16])
-        for s in c:
-            try:
-                code = ''.join(x for x in s)
-                url = f"https:discord.gift/{code}"
-                
-                result = codeChecker(url, genType)
+        ##GENERATE CODES
+        if genType == 1:
+            c = numpy.random.choice(chars, size=[num, 16])
+            for s in c:
+                    code = ''.join(x for x in s)
+                    url = f"https:discord.gift/{code}"
+                    with open("Generated Codes.txt", "a") as file:  # Open file to write
+                                    # Write the nitro code to the file it will automatically add a newline
+                                    file.write(url + "\n")
+                                    print("[" '\033[32m' + "GENERATED CODE" + '\033[39m' "] " + '\033[39m' + f"{url}") 
+        ##GENERATE AND CHECK CODES
+        else:
+            c = numpy.random.choice(chars, size=[num, 16])
+            for s in c:
+                try:
+                    code = ''.join(x for x in s)
+                    url = f"https:discord.gift/{code}"
+                    
+                    result = codeChecker(url, genType)
 
-                if result:
-                    successfulCodes.append(url)
-                else:
-                    invalidCodes += 1
-            except KeyboardInterrupt:
-                # If the user interrupted the program
-                print("\nInterrupted by user")
-                break  # Break the loop
+                    if result:
+                        successfulCodes.append(url)
+                    else:
+                        invalidCodes += 1
+                except KeyboardInterrupt:
+                    # If the user interrupted the program
+                    print("\nInterrupted by user")
+                    break  # Break the loop
         
         if num != 1: print("Finished generating codes.")
         else: print(f"""
@@ -188,7 +195,3 @@ Results:
 if __name__ == '__main__':
     Gen = NitroGen()  # Create the nitro generator object
     Gen.main()  # Run the main code
-
-
-
-
