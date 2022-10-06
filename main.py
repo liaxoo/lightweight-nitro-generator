@@ -109,13 +109,8 @@ class NitroGen:  # Initialise the class
         # Initializing message
         slowType('[' '\033[33m' + '!' + '\033[39m' ']' + '\033[39m' ' Initializing...', 0.05);
 
-        ##time.sleep(2) 
-
         # Run checks 
         moduleCheck();
-        ##time.sleep(1);
-        wifiCheck();
-        ##time.sleep(1);
         fileCheck();
         time.sleep(1);
         clearScreen(2);
