@@ -1,5 +1,7 @@
 
-<h1 align="center">
+> **Note**
+> This is repository is still in development and is getting updated. Most issues will be fixed in the upcoming weeks.
+
 Nitro Generator & Checker
 <a><img source="./images/icon7-github.svg"></img></a>
 </h1>
@@ -13,9 +15,9 @@ Nitro Generator & Checker
 ![Download](https://img.shields.io/badge/Download-%23313131.svg?style=for-the-badge&logo=Github&logoColor=white)
 ![GitHub](https://img.shields.io/github/license/liaxoo/lightweight-nitro-generator?style=for-the-badge)
 <a>
-<img src="images/github.svg" alt="Github"/>
+
 </a>
-<img color="#EEEEE" src="images/python.svg" alt="Github"/>
+<img color="#EEEEE" src="images/python.svg" alt="Python"/>
 
 </p>
 
