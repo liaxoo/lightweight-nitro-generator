@@ -27,7 +27,7 @@
 
 ## How To Use
 
-In order to use the Generator and Checker, you will need you'll need [Python](https://python.com) and [Node.js](http://npmjs.com) (which comes with [npm](http://npmjs.com))
+In order to use the Generator and Checker, you will need you'll need [Python](https://python.org) and [Node.js](http://npmjs.com) (which comes with [npm](http://npmjs.com))
 
 ```bash
 # Clone this repository
