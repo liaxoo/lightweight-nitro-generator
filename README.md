@@ -23,8 +23,7 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
-
+![screenshot](https://raw.githubusercontent.com/liaxoo/lightweight-nitro-generator/main/images/video.gif)
 ## How To Use
 
 In order to use the Generator and Checker, you will need you'll need [Python](https://python.org) and [Node.js](http://npmjs.com) (which comes with [npm](http://npmjs.com))

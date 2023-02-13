@@ -1,0 +1,25 @@
+{
+  "name": "lightweight-nitro-generator-",
+  "version": "1.0.0",
+  "description": "A lightweight nitro generator and checker. ",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liaxoo/lightweight-nitro-generator.git"
+  },
+  "author": "Liaxo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liaxoo/lightweight-nitro-generator/issues"
+  },
+  "homepage": "https://github.com/liaxoo/lightweight-nitro-generator#readme",
+  "devDependencies": {
+    "colorama": "^0.0.0",
+    "colored": "^0.0.15",
+    "numpy": "^0.0.1",
+    "requests": "^0.3.0"
+  }
+}
